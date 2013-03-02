@@ -16,9 +16,9 @@
     "moment": "*",
     "mocha": "*",
     "should": "*",
-    "restler": "*",
     "connect-ltsv-logger": "*",
     "mongoskin": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "request": "*"
   }
 }
