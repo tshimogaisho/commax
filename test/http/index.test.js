@@ -1,7 +1,8 @@
+var should = require('should');
+var request = require('request');
+
 var server = require("../../server");
 
-var should = require('should');
-var restler = require('restler');
 var routes = require('../../routes');
 
 describe('index', function(){
@@ -13,10 +14,10 @@ describe('index', function(){
     });
   });
   it('#show index page', function(done){
-    restler.get('http://localhost:3000').on('complete', function( data, response ){
-        should.exist(data);
-        response.statusCode.should.equal(200);
-        done();
+    request.get('http://localhost:3000',  function(err, res, body){
+      should.not.exist(err);
+      res.statusCode.should.equal(200);
+      done();
     });
   });
   after(function(done){
