@@ -1,6 +1,7 @@
 
 exports.run = function( port, callback ){
   var express = require('express');
+  var partials = require('express-partials');
   var express_logger = require('express-logger');
   var ejs_locals = require('ejs-locals');
   var routes = require('./routes');
@@ -30,6 +31,8 @@ exports.run = function( port, callback ){
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express['static'](path.join(__dirname, 'public')));
+    app.use(partials());
+
     //error handling
     app.use(function(err, req, res, next){
       console.error(err.stack);

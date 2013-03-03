@@ -1,1 +1,17 @@
-<% layout('layout') -%>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>index page</title>
+    <%- partial('shared/_import') %>
+    <script src="/javascripts/require-jquery-1.9.1.js" data-main="/javascripts/app/index.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- partial('shared/_header') %>
+      <div class="container-fluid main">
+      </div>
+    </div>
+    <%- partial('shared/_footer') %>
+  </body>
+</html>
