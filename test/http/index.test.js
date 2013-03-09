@@ -9,8 +9,8 @@ describe('index', function(){
   var httpServer;
   before(function(done) {
     server.run( 3000, function(server, app){
-         done();
-         httpServer = server;
+      done();
+      httpServer = server;
     });
   });
   it('#show index page', function(done){
@@ -21,8 +21,7 @@ describe('index', function(){
     });
   });
   after(function(done){
-      httpServer.close();
-      done();
+    httpServer.close();
+    done();
   });
-
 });
