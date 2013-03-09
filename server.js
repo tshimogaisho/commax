@@ -2,7 +2,6 @@
 exports.run = function( port, callback ){
   var express = require('express');
   var partials = require('express-partials');
-  var express_logger = require('express-logger');
   var ejs_locals = require('ejs-locals');
   var routes = require('./routes');
   var home = require('./routes/home');
@@ -23,18 +22,19 @@ exports.run = function( port, callback ){
 
     app.use(express.favicon());
     app.use(ltsvlogger({
-        format: [ 'host', 'ident', 'user', 'time', 'req', 'status', 'size', 'referer', 'ua'],
+        format: [ 'host', 'ident', 'user', 'time', 'req',
+          'status', 'size', 'referer', 'ua'],
         stream:fs.createWriteStream("logs/ltsv-access.log",{flags: 'a+'})
       }
     ));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use(express['static'](path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'public')));
     app.use(partials());
 
     //error handling
-    app.use(function(err, req, res, next){
+    app.use(function(err, req, res){
       console.error(err.stack);
       (function writeErrorLog(){
         var ws = fs.createWriteStream('logs/error.log', { flags: 'a' });
@@ -55,7 +55,7 @@ exports.run = function( port, callback ){
   });
 
   process.on('uncaughtException', function (err) {
-      console.error('uncaughtException => ' + err.stack);
+    console.error('uncaughtException => ' + err.stack);
   });
 
   app.get('/', routes.index);
