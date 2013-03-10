@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>home page</title>
+<%- partial('shared/_import') %>
+    <link ref="stylesheet" href="/stylesheets/bootstrap/bootstrap-modal.css">
+    <script src="/javascripts/require-jquery-1.9.1.js" data-main="/javascripts/app/home.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+<%- partial('shared/_header') %>
+      <div class="container-fluid main">
+          <div class="row-fluid">
+            <div id="groups" class="span3">
+              <ul class="nav nav-list sidenav affix">
+                <li class="active">
+                  <a href="#" class="goto-list">
+                    <i class="icon-chevron-right"></i>Linux Command
+                  </a>
+                </li>
+                <li><a href="#" class="goto-list"><i class="icon-chevron-right"></i>Git</a></li>
+              </ul>
+            </div>
+
+            <div class="span9" id="container">
+              <div id="commands">
+                <div class="row-fluid">
+                  <div class="span3 offset9 star-setting">
+                    <div class="star-setting-label">表示: </div>
+                    <ul>
+                      <li><a class="star star-large" href="#">★</a></li>
+                      <li><a class="star star-large" href="#">★</a></li>
+                      <li><a class="star star-large" href="#">★</a></li>
+                      <li><a class="star star-large" href="#">★</a></li>
+                      <li><a class="star-nonactive star-large" href="#">★</a></li>
+                    </ul>
+                </div>
+                <table class="table table-hover">
+                  <colgroup>
+                    <col></col>
+                    <col></col>
+                    <col></col>
+                    <col></col>
+                  </colgroup>
+                  <tr>
+                    <th>コマンド名</th>
+                    <th>説明</th>
+                    <th>カテゴリ</th>
+                    <th>*</th>
+                  </tr>
+                  <%for(var i = 0; i < 20; i++){%>
+                  <tr>
+                    <td><a class="goto-command" href="#">find</a></td>
+                    <td>検索を行う</td>
+                    <td>ファイルシステム</td>
+                    <td class="star-setting">
+                      <div class="star-setting">
+                        <ul>
+                          <li><a class="star star-small" href="#">★</a></li>
+                          <li><a class="star star-small" href="#">★</a></li>
+                          <li><a class="star star-small" href="#">★</a></li>
+                          <li><a class="star star-small" href="#">★</a></li>
+                          <li><a class="star-nonactive star-small" href="#">★</a></li>
+                        </ul>
+                    </div>
+                    </td>
+                  </tr>
+                  <%}%>
+                </table>
+              </div>
+            </div>
+            <%- partial('_command') %>
+          </div>
+
+      </div>
+    </div>
+<%- partial('shared/_footer') %>
+
+
+
+
+  </body>
+</html>
