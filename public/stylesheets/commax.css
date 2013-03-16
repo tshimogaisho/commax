@@ -25,7 +25,6 @@ footer {
 
 .wrapper {
   min-height: 90%;
-  height: auto !important;
   height: 100%;
   margin: 0 auto -2.3em;
 }
